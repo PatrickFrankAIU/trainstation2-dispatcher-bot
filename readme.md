@@ -1,6 +1,6 @@
 # 🚂 TrainStation 2 Dispatcher Bot
 
-A Discord bot for TrainStation 2 players to quickly lookup job information, materials, filters, and efficiency data for Summer 2023 storyline jobs.
+A Discord bot for TrainStation 2 players to quickly lookup job information, materials, filters, and efficiency data for Union storyline jobs. The bot currently has only Summer Season data, but includes hooks to switch the dataset each season, and will be updated. 
 
 ## ✨ Features
 
