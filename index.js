@@ -138,11 +138,9 @@ function handleJobCommand(message, args) {
       { name: '🔧 Material', value: job.material, inline: true },
       { name: '🏷️ Filter Code', value: job.filter, inline: true },
       { name: '📦 Units', value: job.units.toString(), inline: true },
-      { name: '🎯 Filter Details', value: decodeFilterShort(job.filter), inline: false },
-      { name: '⭐ Season Points', value: job.seasonPoints.toString(), inline: true },
-      { name: '📊 SP per Train', value: job.spPerTrain.toString(), inline: true }
+      { name: '🎯 Filter Details', value: decodeFilterShort(job.filter), inline: false }
     )
-    .setFooter({ text: `${getCurrentSeasonName()} • Dispatcher Bot` });
+    .setFooter({ text: 'Summer 2025 • Dispatcher Bot' });
   
   message.reply({ embeds: [embed] });
 }
