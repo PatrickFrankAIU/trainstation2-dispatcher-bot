@@ -58,8 +58,13 @@ client.once('ready', () => {
 
 // Command handler
 client.on('messageCreate', (message) => {
-  // Ignore bot messages
+  // Ignore bot messages (including our own bot)
   if (message.author.bot) {
+    return;
+  }
+  
+  // Only respond to messages in guilds (servers), not DMs
+  if (!message.guild) {
     return;
   }
   
@@ -135,7 +140,6 @@ function handleJobCommand(message, args) {
       { name: '📦 Units', value: job.units.toString(), inline: true },
       { name: '🎯 Filter Details', value: decodeFilterShort(job.filter), inline: false },
       { name: '⭐ Season Points', value: job.seasonPoints.toString(), inline: true },
-      { name: '🚆 Optimal Trains', value: job.optimalTrains.toString(), inline: true },
       { name: '📊 SP per Train', value: job.spPerTrain.toString(), inline: true }
     )
     .setFooter({ text: `${getCurrentSeasonName()} • Dispatcher Bot` });
