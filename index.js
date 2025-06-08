@@ -2,6 +2,7 @@ require('dotenv').config();
 const { Client, GatewayIntentBits, EmbedBuilder } = require('discord.js');
 const express = require('express');
 const { getCurrentJobs, getCurrentSeasonName, getAllSeasons, getSeasonInfo } = require('./src/data/seasons.js');
+const { decodeFilter, decodeFilterShort } = require('./src/utils/filterDecoder.js');
 
 // Express web server for Render.com
 const app = express();
@@ -86,6 +87,8 @@ client.on('messageCreate', (message) => {
     handleSitesCommand(message);
   } else if (command === 'season') {
     handleSeasonCommand(message, args);
+  } else if (command === 'filters') {
+    handleFiltersCommand(message);
   }
 });
 
@@ -128,13 +131,32 @@ function handleJobCommand(message, args) {
     .setTitle(`🚂 ${foundSite} Job #${jobNumber}`)
     .addFields(
       { name: '🔧 Material', value: job.material, inline: true },
-      { name: '🏷️ Filter', value: job.filter, inline: true },
+      { name: '🏷️ Filter Code', value: job.filter, inline: true },
       { name: '📦 Units', value: job.units.toString(), inline: true },
+      { name: '🎯 Filter Details', value: decodeFilterShort(job.filter), inline: false },
       { name: '⭐ Season Points', value: job.seasonPoints.toString(), inline: true },
       { name: '🚆 Optimal Trains', value: job.optimalTrains.toString(), inline: true },
       { name: '📊 SP per Train', value: job.spPerTrain.toString(), inline: true }
     )
     .setFooter({ text: `${getCurrentSeasonName()} • Dispatcher Bot` });
+  
+  message.reply({ embeds: [embed] });
+}
+
+// Filter explanation command
+function handleFiltersCommand(message) {
+  let embed = new EmbedBuilder()
+    .setColor(0x6A5ACD)
+    .setTitle('🎯 Filter Code System')
+    .setDescription('TrainStation 2 uses 4-letter codes to specify train requirements')
+    .addFields(
+      { name: '📍 Position 1: Region', value: '**C** = Current region\n**P** = Prior region', inline: true },
+      { name: '⭐ Position 2: Rarity', value: '**L** = Legendary\n**E** = Epic\n**R** = Rare\n**C** = Common\n**A** = Any', inline: true },
+      { name: '⛽ Position 3: Fuel', value: '**S** = Steam\n**D** = Diesel\n**E** = Electric\n**A** = Any', inline: true },
+      { name: '🏷️ Position 4: Union', value: '**Y** = Yes (union-badged)\n**N** = No (non-union)', inline: true },
+      { name: '💡 Example', value: '**CRAY** = Current region, Rare rarity, Any fuel, Yes union-badged', inline: false }
+    )
+    .setFooter({ text: 'Use !filter <CODE> to find jobs with specific requirements' });
   
   message.reply({ embeds: [embed] });
 }
@@ -177,7 +199,8 @@ function handleMaterialCommand(message, args) {
   
   let description = '';
   for (let job of foundJobs) {
-    description = description + `**${job.site}** #${job.number} (${job.filter}) - ${job.seasonPoints} SP\n`;
+    let filterExplanation = decodeFilterShort(job.filter);
+    description = description + `**${job.site}** #${job.number} (${job.filter}: ${filterExplanation}) - ${job.seasonPoints} SP\n`;
   }
   
   embed.setDescription(description);
@@ -221,7 +244,8 @@ function handleFilterCommand(message, args) {
   
   let description = '';
   for (let job of foundJobs) {
-    description = description + `**${job.site}** #${job.number} - ${job.material} (${job.seasonPoints} SP)\n`;
+    let filterExplanation = decodeFilterShort(job.filter);
+    description = description + `**${job.site}** #${job.number} - ${job.material} (${job.filter}: ${filterExplanation}) - ${job.seasonPoints} SP\n`;
   }
   
   embed.setDescription(description);
@@ -295,6 +319,7 @@ function handleHelpCommand(message) {
       { name: '`!best <site>`', value: 'Best SP/train ratios for site\nExample: `!best football`' },
       { name: '`!sites`', value: 'List all available job sites' },
       { name: '`!season`', value: 'Show current season info' },
+      { name: '`!filters`', value: 'Explain filter code system' },
       { name: '`!commands`', value: 'Show this help message' }
     )
     .setFooter({ text: 'TrainStation 2 • Open Source • github.com/yourname/trainstation2-dispatcher-bot' });
