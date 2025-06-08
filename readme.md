@@ -9,7 +9,8 @@ A Discord bot for TrainStation 2 players to quickly lookup job information, mate
 - **Filter Search**: Search by 4-letter filter codes
 - **Efficiency Analysis**: View best SP/train ratios by site
 - **Site Overview**: List all available job sites
-- **Always Online**: Hosted on Render.com with 24/7 uptime
+- **Always Online**: Host on your Discord bot hosting w/ your boy key
+- **Season Support**: Change seasons quickly with a config file (only Summer data included here -- more coming soon)
 
 ## 🎮 Commands
 
