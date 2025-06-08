@@ -175,7 +175,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙋‍♂️ Support
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/trainstation2-dispatcher-bot/issues)
+- **Issues**: [GitHub Issues](https://github.com/PatrickFrankAIU/trainstation2-dispatcher-bot/issues)
 - **Discord**: Join our community server - https://discord.gg/jUnmeaeSad
 - **Email**: pat.frank@gmail.com
 
