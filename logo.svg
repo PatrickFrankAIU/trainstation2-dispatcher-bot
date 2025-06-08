@@ -1,0 +1,155 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradient for background -->
+    <radialGradient id="bgGradient" cx="50%" cy="30%">
+      <stop offset="0%" style="stop-color:#4a90e2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2c5aa0;stop-opacity:1" />
+    </radialGradient>
+    
+    <!-- Gradient for train -->
+    <linearGradient id="trainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#f7931e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e74c3c;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Gradient for radio tower -->
+    <linearGradient id="towerGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#34495e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2c3e50;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Smoke animation -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="200" cy="200" r="190" fill="url(#bgGradient)" stroke="#1a365d" stroke-width="8"/>
+  
+  <!-- Railway tracks -->
+  <g transform="translate(200,200)">
+    <!-- Main track lines -->
+    <rect x="-150" y="60" width="300" height="8" fill="#34495e" rx="4"/>
+    <rect x="-150" y="80" width="300" height="8" fill="#34495e" rx="4"/>
+    
+    <!-- Railroad ties -->
+    <rect x="-140" y="55" width="12" height="38" fill="#8b4513" rx="2"/>
+    <rect x="-110" y="55" width="12" height="38" fill="#8b4513" rx="2"/>
+    <rect x="-80" y="55" width="12" height="38" fill="#8b4513" rx="2"/>
+    <rect x="-50" y="55" width="12" height="38" fill="#8b4513" rx="2"/>
+    <rect x="-20" y="55" width="12" height="38" fill="#8b4513" rx="2"/>
+    <rect x="10" y="55" width="12" height="38" fill="#8b4513" rx="2"/>
+    <rect x="40" y="55" width="12" height="38" fill="#8b4513" rx="2"/>
+    <rect x="70" y="55" width="12" height="38" fill="#8b4513" rx="2"/>
+    <rect x="100" y="55" width="12" height="38" fill="#8b4513" rx="2"/>
+    <rect x="130" y="55" width="12" height="38" fill="#8b4513" rx="2"/>
+  </g>
+  
+  <!-- Train engine -->
+  <g transform="translate(200,200)">
+    <!-- Main body -->
+    <rect x="-60" y="20" width="120" height="40" fill="url(#trainGradient)" rx="8"/>
+    
+    <!-- Cab -->
+    <rect x="20" y="0" width="40" height="40" fill="url(#trainGradient)" rx="6"/>
+    
+    <!-- Windows -->
+    <rect x="25" y="5" width="12" height="12" fill="#87ceeb" rx="2"/>
+    <rect x="43" y="5" width="12" height="12" fill="#87ceeb" rx="2"/>
+    
+    <!-- Wheels -->
+    <circle cx="-35" cy="65" r="12" fill="#2c3e50"/>
+    <circle cx="-10" cy="65" r="12" fill="#2c3e50"/>
+    <circle cx="15" cy="65" r="12" fill="#2c3e50"/>
+    <circle cx="40" cy="65" r="12" fill="#2c3e50"/>
+    
+    <!-- Wheel details -->
+    <circle cx="-35" cy="65" r="6" fill="#34495e"/>
+    <circle cx="-10" cy="65" r="6" fill="#34495e"/>
+    <circle cx="15" cy="65" r="6" fill="#34495e"/>
+    <circle cx="40" cy="65" r="6" fill="#34495e"/>
+    
+    <!-- Smokestack -->
+    <rect x="-45" y="10" width="12" height="15" fill="#34495e" rx="2"/>
+    
+    <!-- Cowcatcher -->
+    <polygon points="-60,40 -80,50 -60,60" fill="#e74c3c"/>
+    
+    <!-- Details -->
+    <rect x="-50" y="25" width="60" height="4" fill="#c0392b" rx="2"/>
+    <rect x="-50" y="35" width="60" height="4" fill="#c0392b" rx="2"/>
+    
+    <!-- Headlight -->
+    <circle cx="-55" cy="30" r="6" fill="#f1c40f" filter="url(#glow)"/>
+  </g>
+  
+  <!-- Radio/Communication tower -->
+  <g transform="translate(350,100)">
+    <!-- Tower base -->
+    <rect x="-5" y="50" width="10" height="100" fill="url(#towerGradient)" rx="2"/>
+    
+    <!-- Tower sections -->
+    <rect x="-8" y="40" width="16" height="15" fill="#34495e" rx="1"/>
+    <rect x="-6" y="30" width="12" height="15" fill="#34495e" rx="1"/>
+    <rect x="-4" y="20" width="8" height="15" fill="#34495e" rx="1"/>
+    
+    <!-- Antenna -->
+    <rect x="-1" y="0" width="2" height="25" fill="#e74c3c"/>
+    
+    <!-- Signal waves -->
+    <path d="M 15,25 A 20,20 0 0,1 15,35" stroke="#27ae60" stroke-width="2" fill="none"/>
+    <path d="M 20,20 A 30,30 0 0,1 20,40" stroke="#27ae60" stroke-width="2" fill="none"/>
+    <path d="M 25,15 A 40,40 0 0,1 25,45" stroke="#27ae60" stroke-width="2" fill="none"/>
+    
+    <!-- Blinking light -->
+    <circle cx="0" cy="8" r="3" fill="#e74c3c">
+      <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Steam/smoke from train -->
+  <g transform="translate(155,180)">
+    <ellipse cx="0" cy="0" rx="8" ry="12" fill="#ecf0f1" opacity="0.7">
+      <animateTransform attributeName="transform" type="translate" values="0,0; -5,-10; 0,-20" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.7;0.3;0" dur="3s" repeatCount="indefinite"/>
+    </ellipse>
+    <ellipse cx="5" cy="0" rx="6" ry="10" fill="#ecf0f1" opacity="0.5">
+      <animateTransform attributeName="transform" type="translate" values="0,0; 3,-8; 0,-16" dur="3.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;0.2;0" dur="3.5s" repeatCount="indefinite"/>
+    </ellipse>
+    <ellipse cx="-3" cy="0" rx="5" ry="8" fill="#ecf0f1" opacity="0.6">
+      <animateTransform attributeName="transform" type="translate" values="0,0; -2,-6; 0,-12" dur="2.8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;0.2;0" dur="2.8s" repeatCount="indefinite"/>
+    </ellipse>
+  </g>
+  
+  <!-- Bot name text -->
+  <text x="200" y="350" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="24" font-weight="bold" fill="#ffffff" stroke="#2c3e50" stroke-width="1">
+    DISPATCHER
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="200" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#ecf0f1">
+    TrainStation 2 Bot
+  </text>
+  
+  <!-- Signal indicators (like a dispatcher board) -->
+  <g transform="translate(80,120)">
+    <rect x="0" y="0" width="40" height="25" fill="#2c3e50" rx="3" opacity="0.8"/>
+    <circle cx="8" cy="12" r="3" fill="#27ae60">
+      <animate attributeName="opacity" values="1;0.5;1" dur="1.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="20" cy="12" r="3" fill="#f1c40f">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="32" cy="12" r="3" fill="#e74c3c">
+      <animate attributeName="opacity" values="1;0.3;1" dur="1.8s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>

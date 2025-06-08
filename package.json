@@ -1,0 +1,27 @@
+{
+  "name": "trainstation2-dispatcher-bot",
+  "version": "1.0.0",
+  "description": "Discord bot for TrainStation 2 job information and filters",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "trainstation2",
+    "gaming",
+    "railway"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "express": "^4.18.2",
+    "dotenv": "^16.3.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
